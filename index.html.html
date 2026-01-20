@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlockyRush | Official Elite Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --cyan: #00f2ff;
+            --purple: #b56bff;
+            --pink: #ff00d4;
+            --white: #ffffff;
+            --btn-grad: linear-gradient(135deg, #ffffff 0%, #b56bff 50%, #ff00d4 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #020106;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* YENİ ARKA PLAN KATMANI */
+        .bg-layer {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background: linear-gradient(rgba(2, 1, 6, 0.75), rgba(2, 1, 6, 0.75)), 
+                        url("https://i.postimg.cc/YhrR6mpP/standard.gif") center/cover no-repeat;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(181, 107, 255, 0.1);
+        }
+
+        .logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 20px;
+            background: linear-gradient(90deg, var(--cyan), var(--white));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 40px;
+        }
+
+        .hero img {
+            width: 250px;
+            height: auto;
+            max-width: 90%;
+            object-fit: contain;
+            border-radius: 30px;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 30px var(--cyan));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(45px, 10vw, 100px);
+            background: linear-gradient(to right, var(--cyan), var(--purple), var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px rgba(181, 107, 255, 0.4));
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 18px 45px;
+            border-radius: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            border: none;
+            font-size: 14px;
+        }
+
+        .btn-dl {
+            background: var(--btn-grad);
+            color: #000;
+            box-shadow: 0 0 30px rgba(255, 0, 212, 0.4);
+        }
+
+        .btn-ds {
+            background: #5865F2;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(88, 101, 242, 0.3);
+        }
+
+        .btn:hover {
+            transform: scale(1.1) translateY(-8px);
+            filter: brightness(1.1);
+        }
+
+        .video-section {
+            padding: 60px 10%;
+            text-align: center;
+        }
+
+        .video-container {
+            max-width: 850px;
+            margin: 0 auto;
+            border: 2px solid var(--cyan);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 0 60px rgba(0, 242, 255, 0.2);
+            background: #000;
+            position: relative;
+        }
+
+        iframe { 
+            width: 100%; 
+            aspect-ratio: 16 / 9; 
+            border: none; 
+            display: block; 
+            position: relative;
+            z-index: 1;
+        }
+
+        .creators-section {
+            padding: 80px 10%;
+            text-align: center;
+        }
+
+        .creators-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            letter-spacing: 10px;
+            color: var(--cyan);
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        .creators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .creator-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 20px;
+            transition: 0.4s ease;
+        }
+
+        .creator-card:hover {
+            background: rgba(0, 242, 255, 0.12);
+            border-color: var(--cyan);
+            transform: translateY(-10px);
+        }
+
+        .creator-card span {
+            display: block;
+            font-size: 9px;
+            color: var(--pink);
+            font-weight: 800;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+        }
+
+        .creator-card b {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-card {
+            background: #0f051a;
+            padding: 50px;
+            border-radius: 30px;
+            border: 1px solid var(--cyan);
+            text-align: center;
+            max-width: 450px;
+        }
+
+        footer {
+            padding: 60px;
+            text-align: center;
+            opacity: 0.4;
+            font-size: 11px;
+            letter-spacing: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .btn-group { flex-direction: column; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-layer"></div>
+
+<header>
+    <div class="logo-text">BLOCKYRUSH</div>
+    <nav><a href="https://discord.gg/7ZKrwxJJ" style="color:#fff; text-decoration:none; font-weight:800; font-size:11px; letter-spacing: 1px; border: 1px solid var(--cyan); padding: 5px 15px; border-radius: 5px;">OFFICIAL HUB</a></nav>
+</header>
+
+<main>
+    <section class="hero">
+        <img src="https://i.postimg.cc/T38JyDrS/Picsart-25-12-26-22-32-14-335.jpg" alt="BlockyRush Logo">
+        <h1>BlockyRush</h1>
+        <p>The ultimate high-speed block world. Build your legacy and race against time.</p>
+        
+        <div class="btn-group">
+            <button class="btn btn-dl" onclick="toggleModal(true)">Download Game</button>
+            <a href="https://discord.gg/7ZKrwxJJ" class="btn btn-ds">BlockyRush Discord</a>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/31X7fNpaMJQ" title="BlockyRush Trailer" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <section class="creators-section">
+        <h2 class="creators-title">Creators By</h2>
+        <div class="creators-grid">
+            <div class="creator-card">
+                <span>Developer</span>
+                <b>MOLOPEK</b>
+            </div>
+            <div class="creator-card">
+                <span>Designer</span>
+                <b>CAKOMIK BG</b>
+            </div>
+            <div class="creator-card">
+                <span>Content Creator</span>
+                <b>MC_YT_</b>
+            </div>
+            <div class="creator-card">
+                <span>Support</span>
+                <b>SUSHILOYOUXBGYT_18051</b>
+            </div>
+            <div class="creator-card">
+                <span>Elite Member</span>
+                <b>SUPERXLEGEND</b>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div class="modal" id="dlModal">
+    <div class="modal-card">
+        <h2 style="color: var(--cyan); margin-bottom: 20px; font-family: Orbitron;">ACCESS RESTRICTED</h2>
+        <p>BlockyRush is currently in Elite Alpha phase. Join the Discord server to apply for testing!</p>
+        <button class="btn btn-dl" style="width:100%; margin-top:30px;" onclick="toggleModal(false)">CONFIRM</button>
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 BLOCKYRUSH COMMAND | ALL SYSTEMS OPERATIONAL
+</footer>
+
+<script>
+    function toggleModal(show) {
+        document.getElementById('dlModal').style.display = show ? 'flex' : 'none';
+    }
+</script>
+
+</body>
+</html>
